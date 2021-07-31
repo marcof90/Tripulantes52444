@@ -29,4 +29,8 @@ public class Vista extends JFrame{
     public void addCurso(int pCodigo, String pNombre, char pJornada) {
         cursoController.addCurso(pCodigo, pNombre, pJornada);
     }
+
+    public String listCursos() {
+        return cursoController.listCursos();
+    }
 }

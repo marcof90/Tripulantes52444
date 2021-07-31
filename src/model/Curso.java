@@ -77,4 +77,11 @@ public class Curso {
         // }
         return total/tripulantes.size();
     }
+
+    @Override
+    public String toString() {
+        // TODO Auto-generated method stub
+        return "Nombre: "+ nombre + ", Codigo: "+ codigo;
+    }
+
 }

@@ -1,6 +1,7 @@
 package view;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import java.awt.event.ActionEvent;
@@ -37,13 +38,41 @@ public class PanelOpciones extends JPanel implements ActionListener{
         add(btnAddCurso);
     }
 
+    private void addCurso() {
+        String[] options = new String[3];
+        options[0] = "Mañana";
+        options[1] = "Tarde";
+        options[2] = "Noche";
+        char[] optionsShort = new char[3];
+        optionsShort[0] = 'M';
+        optionsShort[1] = 'T';
+        optionsShort[2] = 'N';
+        String nombre = JOptionPane.showInputDialog(vistaPrincipal, "Digita el nombre del curso");        
+        String codigo = JOptionPane.showInputDialog(vistaPrincipal, "Digita el codigo del curso");
+        int option = JOptionPane.showOptionDialog(vistaPrincipal, "Escoge una opción", "Jornada del curso", 
+                        JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, null);
+        if(nombre!=null && !nombre.equals("") && option != -1 && codigo != ""){            
+            vistaPrincipal.addCurso(Integer.parseInt(codigo), nombre, optionsShort[option]);
+        }
+        else{
+            JOptionPane.showMessageDialog(vistaPrincipal, "Ups! Revisa los datos", 
+                                "Error en los datos", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void listCursos(){
+        JOptionPane.showMessageDialog(vistaPrincipal, vistaPrincipal.listCursos(), "Lista de cursos", JOptionPane.PLAIN_MESSAGE);
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
         if(e.getActionCommand().equals(OPCION_1)){
-            System.out.println("hola");
+            listCursos();
+            // System.out.println("hola");
         }else if(e.getActionCommand().equals(BTN_ADD_CURSO)){
-            System.out.println("Agregar un curso");
+            addCurso();
+            // System.out.println("Agregar un curso");
         }
     }
 
