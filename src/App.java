@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 import model.Curso;
+import model.Formador;
 import model.Tripulante;
 import view.Vista;
 
@@ -51,6 +52,13 @@ public class App {
         //     desarrollador.getNombre();
         // }
         // programacion1.calcularPromedioCurso();
+
+        // Formador formador = new Formador();
+
+        // Formador formador2 = new Formador("Pepito", 13461);
+
+        // System.out.println(formador2.toString());
+        // System.out.println(formador2);
 
         Vista v = new Vista();
         v.setVisible(true);

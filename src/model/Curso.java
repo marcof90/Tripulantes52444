@@ -22,6 +22,15 @@ public class Curso {
         formador = new Formador(fNombre, fCodigo);
         tripulantes = new ArrayList<>();
     }
+
+    public Curso(int pCodigo, String pNombre, char pJornada) {
+        super();
+        this.codigo = pCodigo;
+        this.nombre = pNombre;
+        this.jornada = pJornada;
+        formador = null;
+        tripulantes = new ArrayList<>();
+    }
     
     public ArrayList<Tripulante> getTripulantes() {
         return tripulantes;
