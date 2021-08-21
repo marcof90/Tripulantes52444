@@ -3,14 +3,17 @@ package controller;
 import java.util.ArrayList;
 
 import model.Curso;
+import services.JavaMySQL;
 
 public class CursoController {
     
+    private JavaMySQL serviceDB;
     private ArrayList<Curso> cursos;
     
     public CursoController() {
         super();
         cursos = new ArrayList<>();
+        serviceDB = new JavaMySQL();
     }    
 
     public ArrayList<Curso> getCursos() {
