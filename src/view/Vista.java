@@ -39,6 +39,7 @@ public class Vista extends JFrame{
 
         add(panelAuxiliar, BorderLayout.CENTER);
         add(panelOpc, BorderLayout.SOUTH);
+        updateListaCursos();
     }
         
     public void addCurso(int pCodigo, String pNombre, char pJornada) {
@@ -53,6 +54,8 @@ public class Vista extends JFrame{
     public void updateInformationCurso() {
         Curso c = cursoController.getCursos().get(panelListaCursos.getActiveCurso());
         panelDetalleCurso.updateInformationCurso(
+            c.getNombre(), c.getCodigo(), c.getJornada(), c.getTripulantes().size());
+        panelCurso.updateInformationCurso(
             c.getNombre(), c.getCodigo(), c.getJornada(), c.getTripulantes().size());
     }
 

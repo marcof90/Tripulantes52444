@@ -1,5 +1,7 @@
 package controller;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import model.Curso;
@@ -13,7 +15,8 @@ public class CursoController {
     public CursoController() {
         super();
         cursos = new ArrayList<>();
-        serviceDB = new JavaMySQL();
+        serviceDB = new JavaMySQL();        
+        fillCursosData();
     }    
 
     public ArrayList<Curso> getCursos() {
@@ -21,6 +24,7 @@ public class CursoController {
     }
 
     public void addCurso(int pCodigo, String pNombre, char pJornada) {
+        serviceDB.insertCurso(pNombre, pCodigo, pJornada);
         Curso c = new Curso(pCodigo, pNombre, pJornada);
         cursos.add(c);
     }
@@ -41,4 +45,17 @@ public class CursoController {
         return listData;
     }
 
+    public void fillCursosData() {
+        cursos.clear();
+        ResultSet rs = serviceDB.getCursosDB();
+        try {
+            while (rs.next()) {
+                Curso curso = new Curso(rs.getInt("codigo"), rs.getString("nombre"), 
+                rs.getString("jornada").charAt(0));
+                cursos.add(curso);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

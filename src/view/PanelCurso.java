@@ -44,6 +44,12 @@ public class PanelCurso extends JPanel implements ActionListener {
         add(btnCrear);
     }
 
+    public void updateInformationCurso(String nombre, int codigo, char jornada, int tripulantes) {
+        txtNombre.setText(nombre);
+        txtJornada.setText(jornada+"");
+        txtCodigo.setText(codigo+"");
+    }
+
     public void addCurso() {
         if (!txtNombre.getText().equals(null) && !txtNombre.getText().trim().equals("")) {
             if (!txtCodigo.getText().equals(null) && !txtCodigo.getText().trim().equals("")) {

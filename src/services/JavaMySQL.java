@@ -6,7 +6,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Properties;
 
 public class JavaMySQL {
@@ -50,6 +52,34 @@ public class JavaMySQL {
         }
     }
 
+    public void insertCurso(String nombre, int codigo, char jornada) {
+        String sql = "INSERT INTO `cursos`(`nombre`, `codigo`, `jornada`)"+
+            " VALUES ('"+nombre+"','"+codigo+"','"+jornada+"')";
+        executeInsertStatement(sql);        
+    }
 
+    public ResultSet getCursosDB() {
+        String sql = "SELECT * FROM cursos";
+        return executeQueryStatement(sql);
+    }
+
+    public void executeInsertStatement(String sql) {        
+        try {
+            Statement stmt = connection.createStatement();
+            stmt.executeUpdate(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public ResultSet executeQueryStatement(String sql) {
+        try {
+            Statement stmt = connection.createStatement();
+            return stmt.executeQuery(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 }
