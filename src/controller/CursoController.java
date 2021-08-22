@@ -29,6 +29,10 @@ public class CursoController {
         cursos.add(c);
     }
 
+    public void editCurso(int pCodigo, String pNombre, char pJornada) {
+        serviceDB.updateCurso(pNombre, pCodigo, pJornada);
+    }
+
     public String listCursos() {
         String lista = "";
         for (Curso curso : cursos) {

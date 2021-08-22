@@ -59,6 +59,10 @@ public class Vista extends JFrame{
             c.getNombre(), c.getCodigo(), c.getJornada(), c.getTripulantes().size());
     }
 
+    public void updateCurso(int pCodigo, String pNombre, char pJornada) {
+        cursoController.editCurso(pCodigo, pNombre, pJornada);
+    }
+
     public void updateListaCursos() {
         panelListaCursos.updateListaCursos(cursoController.listCursosData());
     }

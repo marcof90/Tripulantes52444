@@ -58,6 +58,12 @@ public class JavaMySQL {
         executeInsertStatement(sql);        
     }
 
+    public void updateCurso(String nombre, int codigo, char jornada){
+        String sql = "UPDATE `cursos` SET `nombre`='"+nombre+"',`jornada`='"+jornada+"' "+
+            "WHERE `codigo`="+codigo;
+        executeInsertStatement(sql);
+    }
+
     public ResultSet getCursosDB() {
         String sql = "SELECT * FROM cursos";
         return executeQueryStatement(sql);
